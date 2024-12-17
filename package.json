@@ -1,0 +1,64 @@
+{
+  "name": "vite-vue3-ts-electron",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "description": "A Vite Vue3 TypeScript Electron App",
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build && cross-env NODE_ENV=production electron-builder",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.your-app.id",
+    "productName": "Your App Name",
+    "directories": {
+      "output": "release/${version}"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "asar": true,
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.1",
+    "electron-builder": "23.6.0",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.1",
+    "vite-plugin-electron": "^0.29.0",
+    "vue-tsc": "^2.1.10"
+  }
+}
